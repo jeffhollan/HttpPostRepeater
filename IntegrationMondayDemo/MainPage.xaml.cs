@@ -42,11 +42,11 @@ namespace IntegrationMondayDemo
 
         private async void Start_Click(object sender, RoutedEventArgs e)
         {
-            for (int x = 0; x < 20; x++)
+            for (int x = 0; x < 100; x++)
             {
                 var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { name = "Jeff Hollan", id = Guid.NewGuid(), timestamp = DateTime.UtcNow, prioritize = false, value = 1.1 } };
-                var response = await CallLogicApp(JsonConvert.SerializeObject(upload));
-                text.Text = text.Text + "\n" + response.ReasonPhrase;
+                CallLogicApp(JsonConvert.SerializeObject(upload));
+                
             }
         }
 
@@ -58,6 +58,7 @@ namespace IntegrationMondayDemo
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", authtoken);
                 var response = await client.PostAsync(url, content);
+                text.Text = text.Text + "\n" + response.ReasonPhrase;
                 return response;
             }
         }
