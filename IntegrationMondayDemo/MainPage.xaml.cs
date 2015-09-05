@@ -42,10 +42,10 @@ namespace IntegrationMondayDemo
 
         private async void Start_Click(object sender, RoutedEventArgs e)
         {
-            for (int x = 0; x < 100; x++)
+            for (int x = 0; x < 1000; x++)
             {
                 var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { name = "Jeff Hollan", id = Guid.NewGuid(), timestamp = DateTime.UtcNow, prioritize = false, value = 1.1 } };
-                CallLogicApp(JsonConvert.SerializeObject(upload));
+                await CallLogicApp(JsonConvert.SerializeObject(upload));
                 
             }
         }
