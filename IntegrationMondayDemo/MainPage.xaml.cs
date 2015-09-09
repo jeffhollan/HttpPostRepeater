@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using System.Net.Http;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,6 +15,7 @@ namespace IntegrationMondayDemo
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private string[] customers = { "Microsoft", "Dell", "HP", "Lenovo", "Apple", "Google", "Amazon" };
         //Loading a Resources File that has the URL and AuthToken.  Doing this so I can store nice places like GitHub without compromising :)
         private string url;
         private string authtoken;
@@ -42,9 +32,11 @@ namespace IntegrationMondayDemo
 
         private async void Start_Click(object sender, RoutedEventArgs e)
         {
+            Random rnd = new Random();
             for (int x = 0; x < 1000; x++)
             {
-                var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { name = "Jeff Hollan", id = Guid.NewGuid(), timestamp = DateTime.UtcNow, prioritize = false, value = 1.1 } };
+                var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { customer = customers[rnd.Next(0, customers.Length - 1)],  timestamp = DateTime.UtcNow, prioritize = false, value = 1.1, trackingId = Guid.NewGuid() } };
+                Debug.WriteLine(JsonConvert.SerializeObject(upload));
                 await CallLogicApp(JsonConvert.SerializeObject(upload));
                 
             }
@@ -69,15 +61,20 @@ namespace IntegrationMondayDemo
         public string name { get; set; }
         public Outputs outputs { get; set; }
 
+        
+
         public class Outputs
         {
-            public Guid id { get; set; }
-            public string name { get; set; }
+            
+            public string customer { get; set; }
             public DateTime timestamp { get; set; }
             public double value { get; set; }
-
             public bool prioritize { get; set; }
+
+            public Guid trackingId { get; set; }
         }
+
+        
     }
 
 
