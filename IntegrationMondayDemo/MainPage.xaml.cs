@@ -15,7 +15,8 @@ namespace IntegrationMondayDemo
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string[] customers = { "Microsoft", "Dell", "HP", "Lenovo", "Apple", "Google", "Amazon" };
+        private string[] locations = { "China", "India", "United States", "Indonesia", "Brazil", "Pakistan", "Nigeria", "Bangladesh", "Russia", "Japan", "Mexico", "Phillipines", "Vietnam", "Ethiopia", "Egypt", "United Kingdom", "Germany", "Turkey", "Iran", "France", "Italy", "Australia", "New Zealand" };
+        private string[] customers = { "Jeff", "Josh", "Stephen", "Priti", "Prashant", "Rachel", "Shyam", "Srivatsan", "Sameer", "Rajesh", "Jon", "Tony", "John", "Ping", "Lakshmi" };
         //Loading a Resources File that has the URL and AuthToken.  Doing this so I can store nice places like GitHub without compromising :)
         private string url;
         private string authtoken;
@@ -33,9 +34,9 @@ namespace IntegrationMondayDemo
         private async void Start_Click(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            for (int x = 0; x < 1000; x++)
+            for (int x = 0; x < 20; x++)
             {
-                var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { customer = customers[rnd.Next(0, customers.Length - 1)],  timestamp = DateTime.UtcNow, prioritize = false, value = 1.1, trackingId = Guid.NewGuid() } };
+                var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { customer = customers[rnd.Next(0, customers.Length - 1)],  trackingId = Guid.NewGuid(), location = locations[rnd.Next(0, locations.Length - 1)] } };
                 Debug.WriteLine(JsonConvert.SerializeObject(upload));
                 await CallLogicApp(JsonConvert.SerializeObject(upload));
                 
@@ -67,9 +68,9 @@ namespace IntegrationMondayDemo
         {
             
             public string customer { get; set; }
-            public DateTime timestamp { get; set; }
-            public double value { get; set; }
-            public bool prioritize { get; set; }
+
+            public string location { get; set; }
+            
 
             public Guid trackingId { get; set; }
         }
