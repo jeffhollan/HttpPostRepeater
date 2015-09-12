@@ -7,8 +7,8 @@
     <ProjectGuid>{317E6443-35E7-4061-BAED-8EC09DE8EE89}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntegrationMondayDemo</RootNamespace>
-    <AssemblyName>IntegrationMondayDemo</AssemblyName>
+    <RootNamespace>AzureCon</RootNamespace>
+    <AssemblyName>AzureCon</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>

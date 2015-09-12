@@ -8,14 +8,14 @@ using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace IntegrationMondayDemo
+namespace AzureCon
 {
     /// <summary>
     /// Simple Windows 10 app to push an Azure Logic App a bunch of times with a JSON Packet
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string[] locations = { "China", "India", "United States", "Indonesia", "Brazil", "Pakistan", "Nigeria", "Bangladesh", "Russia", "Japan", "Mexico", "Phillipines", "Vietnam", "Ethiopia", "Egypt", "United Kingdom", "Germany", "Turkey", "Iran", "France", "Italy", "Australia", "New Zealand", "United States", "Canada", "Canada", "United Kingdom", "United Kingdom", "United Staes" };
+        private string[] locations = { "China", "India", "United States", "Indonesia", "Brazil", "Pakistan", "Nigeria", "Bangladesh", "Russia", "Japan", "Mexico", "Phillipines", "Vietnam", "Ethiopia", "Egypt", "United Kingdom", "Germany", "Turkey", "Iran", "France", "Italy", "Australia", "New Zealand", "United States", "Canada", "Canada", "United Kingdom", "United Staes" };
         private string[] customers = { "Jeff", "Josh", "Stephen", "Priti", "Prashant", "Rachel", "Shyam", "Srivatsan", "Sameer", "Rajesh", "Jon", "Tony", "John", "Ping", "Lakshmi" };
         //Loading a Resources File that has the URL and AuthToken.  Doing this so I can store nice places like GitHub without compromising :)
         private string url;
