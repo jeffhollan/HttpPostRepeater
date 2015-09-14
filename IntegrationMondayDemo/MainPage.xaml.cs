@@ -34,7 +34,7 @@ namespace AzureCon
         private async void Start_Click(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            for (int x = 0; x < 500; x++)
+            for (int x = 0; x < 1000; x++)
             {
                 var upload = new Upload { name = "ManualTrigger", outputs = new Upload.Outputs { customer = customers[rnd.Next(0, customers.Length - 1)],  trackingId = Guid.NewGuid(), location = locations[rnd.Next(0, locations.Length - 1)] } };
                 Debug.WriteLine(JsonConvert.SerializeObject(upload));
